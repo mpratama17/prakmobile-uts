@@ -15,88 +15,59 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(0),
-              ),
-            ),
-            Image.asset(
-              'assets/tes.png',
-              fit: BoxFit.cover,
-              height: 550,
-              width: 500,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, top: 450),
-              child: Text(
-                'Lets\nGet Started',
-                style: GoogleFonts.poppins(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          Text('Login Page'),
+        ],
       ),
-    );
-  }
-}
-          // body: Padding(
-          //   padding: const EdgeInsets.all(20),
-          //   child: Column(
-          //     children: [
-          //       Padding(padding: const EdgeInsets.only(top: 100)),
-          //       TextField(
-          //         decoration: const InputDecoration(
-          //           border: OutlineInputBorder(
-          //             borderRadius: BorderRadius.all(Radius.circular(18)),
-          //           ),
-          //           labelText: 'Username',
-          //         ),
-          //       ),
-          //       Padding(padding: const EdgeInsets.only(top: 20)),
-          //       TextField(
-          //         decoration: InputDecoration(
-          //           hintText: 'Password',
-          //           hintStyle: TextStyle(fontSize: 16),
-          //           border: OutlineInputBorder(
-          //             borderRadius: BorderRadius.circular(18),
-          //             borderSide: BorderSide(
-          //               width: 1,
-          //               style: BorderStyle.none,
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //       Padding(padding: EdgeInsets.only(top: 20)),
-          //       Container(
-          //         decoration: BoxDecoration(
-          //           borderRadius: BorderRadius.all(Radius.circular(20)),
-          //           color: Colors.indigo,
-          //         ),
-          //         height: 40,
-          //         width: 200,
-          //         child: ElevatedButton(
-          //             onPressed: () {
-          //               Navigator.pushReplacement(
-          //                   context,
-          //                   MaterialPageRoute(
-          //                       builder: (BuildContext context) => Home()));
-          //             },
-          //             child: Text('Login')),
-          //       )
-          //     ],
-          //   ),
-          // ),
-      //     Column(
+      // body: Padding(
+      //   padding: const EdgeInsets.all(20),
+      //   child: Column(
+      //     children: [
+      //       Padding(padding: const EdgeInsets.only(top: 100)),
+      //       TextField(
+      //         decoration: const InputDecoration(
+      //           border: OutlineInputBorder(
+      //             borderRadius: BorderRadius.all(Radius.circular(18)),
+      //           ),
+      //           labelText: 'Username',
+      //         ),
+      //       ),
+      //       Padding(padding: const EdgeInsets.only(top: 20)),
+      //       TextField(
+      //         decoration: InputDecoration(
+      //           hintText: 'Password',
+      //           hintStyle: TextStyle(fontSize: 16),
+      //           border: OutlineInputBorder(
+      //             borderRadius: BorderRadius.circular(18),
+      //             borderSide: BorderSide(
+      //               width: 1,
+      //               style: BorderStyle.none,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Padding(padding: EdgeInsets.only(top: 20)),
+      //       Container(
+      //         decoration: BoxDecoration(
+      //           borderRadius: BorderRadius.all(Radius.circular(20)),
+      //           color: Colors.indigo,
+      //         ),
+      //         height: 40,
+      //         width: 200,
+      //         child: ElevatedButton(
+      //             onPressed: () {
+      //               Navigator.pushReplacement(
+      //                   context,
+      //                   MaterialPageRoute(
+      //                       builder: (BuildContext context) => Home()));
+      //             },
+      //             child: Text('Login')),
+      //       )
+      //     ],
+      //   ),
+      // ),
+      // body: Column(
       //   children: [
       //     Stack(
       //       children: [
@@ -238,4 +209,7 @@ class _LoginPageState extends State<LoginPage> {
       //       ),
       //     ),
       //   ],
-
+      // ),
+    );
+  }
+}
