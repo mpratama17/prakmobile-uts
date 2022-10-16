@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prakmobileuts/fungsi.dart';
-import 'package:prakmobileuts/pages/login.dart';
-import 'package:prakmobileuts/pages/profile.dart';
+import 'package:prakmobileuts/customwidgets.dart';
+
+import '../model/model.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,114 +12,111 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _pilihanButton = 0;
+  // int _pilihanButton = 0;
 
-  final List<Widget> _children = [
-    Home(),
-    Profile(),
-    // Beranda(),
-    // Reels(),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _pilihanButton = index;
-    });
-  }
+  // final List<Widget> _children = [
+  //   Home(),
+  //   Profile(),
+  //   // Beranda(),
+  //   // Reels(),
+  // ];
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _pilihanButton = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
+      backgroundColor: const Color(0xFFffffff),
+      // appBar: iniAppBar(),
       drawer: iniDrawer(context),
-
-      //bottomNavigationBar: iniBottomNavigationBar(),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   // currentIndex: selectedPage,
-      //   // onTap: (index),
-      //   selectedItemColor: Colors.grey[800],
-      //   type: BottomNavigationBarType.fixed,
-      //   backgroundColor: Colors.white,
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: CircleAvatar(
-      //         backgroundImage: AssetImage('assets/tes.png'),
-      //         // NetworkImage(
-      //         //     'https://www.instagram.com/p/CgE12tsP6JN/?utm_source=ig_web_copy_link'),
-      //       ),
-      //       label: 'Profile',
-      //     ),
-      //   ],
-      //   currentIndex: _pilihanButton,
-      //   onTap: _onItemTapped,
-      // ),
-      body: Column(
-        children: [
-          Stack(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //Container Header
               Container(
-                height: 200,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/1.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              // Container(
-              //   height: 200,
-              //   width: double.infinity,
-              //   decoration: const BoxDecoration(
-              //     gradient: LinearGradient(
-              //       begin: Alignment.bottomCenter,
-              //       end: Alignment.topCenter,
-              //       colors: [
-              //         Colors.black,
-              //         Colors.black12,
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              Positioned(
-                bottom: 20,
-                left: 20,
-                top: 20,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Welcome to',
-                      style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                    Align(
+                      alignment: AlignmentDirectional(-1.07, 0),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.menu,
+                        ),
+                        iconSize: 35,
+                        // color: Colors.green,
+                        // splashColor: Colors.purple,
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
                       ),
                     ),
-                    const Text(
-                      'PrakMobile UTS',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    //Text Header
+                    iniHeader("Hari ini \nMau kemana?"),
+
+                    //Text SubHeader
+                    iniSubHeader(
+                        "temukan tempat wisata \nterbaik di sekitarmu"),
+                    SizedBox(
+                      height: 20,
                     ),
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    //       Navigator.pop(context, LoginPage());
-                    //     },
-                    //     child: const Text('Login'))
+                    //Text "Recommended"
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Recommended",
+                          style: GoogleFonts.poppins(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black)),
+                    ),
                   ],
+                ),
+              ),
+              Container(
+                // color: Colors.amber,
+                height: 250,
+                width: double.infinity,
+
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      elevation: 5,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            gambar[index],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, bottom: 10),
+                                child: Text("tes",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
