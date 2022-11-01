@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prakmobileuts/customwidgets.dart';
 import 'package:prakmobileuts/pages/home.dart';
 
 class Profile extends StatefulWidget {
@@ -16,94 +17,80 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        //Padding column keseluruhan
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Column(
+          child: Padding(
+        padding: const EdgeInsets.all(24),
+
+        //Container Keseluruhan
+        child: Column(
+          children: [
+            //Container header
+            Container(
+              height: 50,
+              width: 400,
+              // color: Colors.red,
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(start: 0),
+                child: Row(
+                  //create header profle
                   children: [
-                    Center(
-                      child: Container(
-                        // margin: const EdgeInsets.only(top: 20),
-                        child: const CircleAvatar(
-                          radius: 70,
-                          backgroundImage: AssetImage('assets/tes.png'),
-                        ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Home()));
+                      },
+                      iconSize: 30,
+                      icon: Icon(Icons.arrow_back),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.only(start: 110),
+                      child: Text(
+                        "Profile",
+                        style: GoogleFonts.poppins(
+                            fontSize: 20, fontWeight: FontWeight.w600),
                       ),
                     ),
-                    Divider(
-                      height: 60,
-                      color: Colors.grey[800],
-                      thickness: 0.5,
-                      endIndent: 30,
-                      indent: 20,
-                    ),
-                    // Divider(
-                    //   height: 20,
-                    //   color: Colors.grey[800],
-                    //   thickness: 0.5,
-                    //   indent: 20,
-                    //   endIndent: 20,
-                    // ),
                   ],
                 ),
               ),
-              Container(
-                  // alignment: Alignment.centerLeft,
-                  child: Column(
+            ),
+
+            //Container circular avatar
+            Container(
+              // color: Colors.yellow,
+              // height: 110,
+              width: 400,
+              child: Column(
                 children: [
-                  Text(
-                    'Mohammad Yoga Pratama',
-                    style: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: CircleAvatar(
+                      radius: 55,
+                      backgroundImage: AssetImage('assets/yoga.png'),
                     ),
                   ),
-                  Text(
-                    'sdfdsf',
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) => Home()));
-                      },
-                      child: Text('Kembali ke halaman utama'))
                 ],
-              )),
-            ],
-          ),
+              ),
+            ),
+
+            //Container detail informasi
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Container(
+                width: 350,
+                // color: Colors.blue,
+                child: Column(
+                  children: [
+                    detailProfile('Name', "Mohammad Yoga Pratama"),
+                    detailProfile('Email', "yogmhmmd17@gmail.com"),
+                    detailProfile('Address', "Malang, Indonesia"),
+                    detailProfile('', "")
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
+      )),
     );
   }
 }
-// child: Center(
-          //   child: Column(
-          //     children: [
-          //       Padding(padding: EdgeInsets.only(top: 20)),
-          //       CircleAvatar(
-          //         backgroundImage: const AssetImage('assets/tes.png'),
-          //         radius: 60,
-          //       ),
-          //       Divider(
-          //         height: 60,
-          //         color: Colors.grey[800],
-          //         thickness: 0.5,
-          //         endIndent: 30,
-          //         indent: 30,
-          //       ),
-          //     ],
-          //   ),
-          // ),

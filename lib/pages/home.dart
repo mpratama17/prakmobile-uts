@@ -12,109 +12,131 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // int _pilihanButton = 0;
-
-  // final List<Widget> _children = [
-  //   Home(),
-  //   Profile(),
-  //   // Beranda(),
-  //   // Reels(),
-  // ];
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _pilihanButton = index;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFffffff),
-      // appBar: iniAppBar(),
+      backgroundColor: const Color(0xFFFEFBF6),
+      appBar: iniAppBar(),
       drawer: iniDrawer(context),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //Container Header
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(-1.07, 0),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.menu,
-                        ),
-                        iconSize: 35,
-                        // color: Colors.green,
-                        // splashColor: Colors.purple,
-                        onPressed: () {
-                          Scaffold.of(context).openDrawer();
-                        },
-                      ),
-                    ),
-                    //Text Header
-                    iniHeader("Hari ini \nMau kemana?"),
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          child: Container(
+            // color: Colors.green,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //Container Header
+                Container(
+                  // color: Colors.amber,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //Text Header
+                      iniHeader("Hari ini \nMau kemana?"),
 
-                    //Text SubHeader
-                    iniSubHeader(
-                        "temukan tempat wisata \nterbaik di sekitarmu"),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    //Text "Recommended"
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Recommended",
+                      //Text SubHeader
+                      iniSubHeader(
+                          "temukan tempat wisata \nterbaik di sekitarmu"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      //Text "Recommended"
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Recommended",
                           style: GoogleFonts.poppins(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black)),
-                    ),
-                  ],
+                              color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                // color: Colors.amber,
-                height: 250,
-                width: double.infinity,
-
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 5,
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            gambar[index],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  // color: Colors.blue,
+                  height: 250,
+                  width: double.infinity,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: page == null ? 0 : page.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => page[index]));
+                        },
+                        child: Container(
+                          child: Stack(
+                            //Container untuk gambar
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, bottom: 10),
-                                child: Text("tes",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 20,
-                                      color: Colors.white,
-                                    )),
-                              ),
+                              iniCard(gambar[index]),
+                              iniTextCard(nmtmpat[index], lokasi[index]),
                             ],
                           ),
-                        ],
-                      ),
-                    );
-                  },
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+
+                //Container Kategori terpopuler
+                Container(
+                  // color: Colors.amber,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //Text "Kategori Terpopuler"
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Kategori Terpopuler",
+                          style: GoogleFonts.poppins(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      //Container untuk kategori
+                      Container(
+                        // color: Colors.amber,
+                        height: 210,
+                        width: 390,
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              child: Stack(
+                                //Container untuk gambar
+                                children: [
+                                  iniCardPopuler(gambarPopuler[index]),
+                                  iniTextCardPopuler(
+                                      nmPopuler[index], lokasiPopuler[index]),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
