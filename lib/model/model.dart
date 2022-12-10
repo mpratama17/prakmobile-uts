@@ -51,3 +51,9 @@ List lokasiPopuler = [
 ];
 
 List page = [BromoDetail(), Profile(), Home(), Home(), Home()];
+
+//create data dummy
+//convertation to object
+
+//create list of object from network
+List foto = ['tes'];
